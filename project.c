@@ -28,7 +28,7 @@ int pCount = 0;
 Transaction history[100]; 
 int hCount = 0;           
 
-// --- NGUYEN MAU HAM ---
+
 void clearBuffer();
 void trim(char *s);
 int isNumber(char *s);
@@ -38,7 +38,7 @@ void initData();
 
 void F01_AddProduct();
 void F02_UpdateProduct();
-void F03_ChangeStatus(); // <-- Cap nhat logic moi tai day
+void F03_ChangeStatus(); 
 void F04_SearchProduct();
 void F05_ListProducts(); 
 void F06_SortProducts();
@@ -57,10 +57,10 @@ int main() {
         printf("==========================================\n");
         printf("1. F01 - Them hang hoa moi\n");
         printf("2. F02 - Cap nhat thong tin\n");
-        printf("3. F03 - Cap nhat trang thai (Con hang/Het hang)\n"); // <-- Doi ten menu
+        printf("3. F03 - Cap nhat trang thai \n"); // <-- Doi ten menu
         printf("4. F04 - Tim kiem hang hoa\n");
-        printf("5. F05 - Danh sach hang hoa (PHAN TRANG)\n");
-        printf("6. F06 - Sap xep hang hoa (Theo SL giam dan)\n");
+        printf("5. F05 - Danh sach hang hoa \n");
+        printf("6. F06 - Sap xep hang hoa \n");
         printf("7. F07 - Nhap/Xuat kho\n");
         printf("8. F08 - Lich su giao dich\n");
         printf("0. Thoat\n");
@@ -119,7 +119,7 @@ void initData() {
 
     // Trang 3
     strcpy(products[10].id, "SP011"); strcpy(products[10].name, "Den ban Xiaomi"); strcpy(products[10].unit, "Cai"); products[10].quantity = 15; products[10].status = 1; pCount++;
-    strcpy(products[11].id, "SP012"); strcpy(products[11].name, "Day cap HDMI"); strcpy(products[11].unit, "Met"); products[11].quantity = 200; products[11].status = 1; pCount++;
+    strcpy(products[11].id, "SP012"); strcpy(products[11].name, "Day cap HDMI"); strcpy(products[11].unit, "day"); products[11].quantity = 200; products[11].status = 1; pCount++;
 }
 
 void clearBuffer() { int c; while ((c = getchar()) != '\n' && c != EOF); }
@@ -280,7 +280,7 @@ void F07_StockInOut() {
         products[idx].quantity += amount;
         // Tu dong chuyen sang Con hang neu dang het hang
         if (products[idx].status == 0) products[idx].status = 1; 
-        printf("-> NHAP KHO thanh cong! Ton moi: %d (Trang thai: Con hang)\n", products[idx].quantity);
+        printf("-> NHAP KHO thanh cong! Ton moi: %d \n", products[idx].quantity);
         recordTransaction("NHAP", products[idx].id, products[idx].name, amount);
     } else {
         if (products[idx].status == 0 && products[idx].quantity == 0) {
